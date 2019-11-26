@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+	    	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		    <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>     
+		    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+		    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+		    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		    <script type="text/javascript"> 
+		    	
+		    </script>
+		<title>EventosApp</title>
+		<style>
+		h1{
+		text-align:center;font-size:17pt;
+		}
+		nav{
+		background-color:#26a69a !important; color:#fff;text-align:center; font-weight:bold;
+		}
+		#mensagem{
+		text-align:center;
+		}
+		#mensagem span{
+		background-color:#fff !important; color:#26a69a;text-align:center; font-weight:bold;padding:10px;border:1px solid #26a69a;
+		}
+		</style>
+	</head>
+	<nav>
+		<a href="/eventos">Lista de Eventos</a>
+	</nav>
+	<body>
+		<h1>Cadastro de Eventos</h1>
+	<div class="container" th:each="evento : ${evento}">
+
+		<span id="mensagem" >
+			<th:block th:include="mensagemValidacao"></th:block>
+		</span>	
+		<form method="post">
+		 
+		<div class="input-field">
+			<label><b>Nome</b> <span th:text="${evento.nome}"></span></label>
+			<input type="text" name="nome"/>
+		</div>
+		<div class="input-field">
+			<label><b>Local</b> <span th:text="${evento.local}"></span></label>
+			<input type="text" name="local"/>
+		</div>
+		<div class="input-field">
+			<label><b>Data</b> <span th:text="${evento.data}"></span></label>
+			<input type="text" name="data" />
+		</div>
+		<div class="input-field">
+			<label><b>Horario</b> <span th:text="${evento.horario}"></span></label>
+			<input type="text" name="horario"/>
+		</div>
+			<button class="btn" type="submit">Alterar</button>
+		</form>
+		
+		<!-- <form method="post" th:object="${evento}" th:action="@{/cadastro}">
+		 <input type="hidden" th:field="*{codigo}" />
+		<div class="input-field">
+			<label>Nome</label>
+			<input type="text" th:field="*{nome}" name="nome"/>
+		</div>
+		<div class="input-field">
+			<label>Local</label>
+			<input type="text" th:field="*{local}" name="local"/>
+		</div>
+			<label>Data</label>
+			<input type="date" th:field="*{data}" name="data"/>
+		<div class="input-field">
+			<label>Horario</label>
+			<input type="text" th:field="*{horario}" name="horario"/>
+		</div>
+			<button class="btn" type="submit">Salvar</button>
+		</form>
+ -->		
+		
+	</div>
+	</body>
+</html>

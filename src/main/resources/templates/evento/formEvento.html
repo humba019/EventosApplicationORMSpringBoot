@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	
+	      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+	    	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		<title>EventosApp</title>
+		<style>
+		h1{
+		text-align:center;font-size:17pt;
+		}
+		nav{
+		background-color:#26a69a !important; color:#fff;text-align:center; font-weight:bold;
+		}
+		#mensagem{
+		text-align:center;
+		}
+		#mensagem span{
+		background-color:#fff !important; color:#26a69a;text-align:center; font-weight:bold;padding:10px;border:1px solid #26a69a;
+		}
+		</style>
+	</head>
+	<nav>
+		<a href="/eventos">Lista de Eventos</a>
+	</nav>
+	<body>
+		<h1>Cadastro de Eventos</h1>
+	<div class="container">
+	
+		<span id="mensagem" >
+			<th:block th:include="mensagemValidacao"></th:block>
+		</span>	
+		<form method="post">
+		 
+		<div class="input-field">
+			<label><b>Nome</b></label>
+			<input type="text" name="nome"/>
+		</div>
+		<div class="input-field">
+			<label><b>Local</b></label>
+			<input type="text" name="local"/>
+		</div>
+		<div class="input-field">
+			<label><b>Data</b></label>
+			<input type="text" name="data"/>
+		</div>
+		<div class="input-field">
+			<label><b>Horario</b></label>
+			<input type="text" name="horario"/>
+		</div>
+			<button class="btn" type="submit">Salvar</button>
+		</form>
+		
+		<!-- <form method="post" th:object="${evento}" th:action="@{/cadastro}">
+		 <input type="hidden" th:field="*{codigo}" />
+		<div class="input-field">
+			<label>Nome</label>
+			<input type="text" th:field="*{nome}" name="nome"/>
+		</div>
+		<div class="input-field">
+			<label>Local</label>
+			<input type="text" th:field="*{local}" name="local"/>
+		</div>
+			<label>Data</label>
+			<input type="date" th:field="*{data}" name="data"/>
+		<div class="input-field">
+			<label>Horario</label>
+			<input type="text" th:field="*{horario}" name="horario"/>
+		</div>
+			<button class="btn" type="submit">Salvar</button>
+		</form>
+ -->		
+		
+	</div>
+	</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" 
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	  <head>
+	      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+	        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	      	    	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		<title>Eventos APP</title>	  
+		<style>
+		h1{
+		text-align:center;font-size:17pt;
+		}
+		h3{
+		text-align:center;font-size:17pt;
+		}
+		nav{
+		background-color:#26a69a !important; color:#fff;text-align:center; font-weight:bold;
+		}
+		.col{
+		width:20%;height:60%;
+		}
+		.row{
+		background-color:none;color:#262626;box-shadow:0 0 0.5em gray;
+		}
+		</style>
+	  </head>
+<body> 
+	<nav>
+		<a href="/eventos">Lista de Eventos</a>
+	</nav>
+
+		<div th:each="evento:  ${eventos}">
+			<div class="container">
+				<div class="row">
+				<div class="col">
+				<p><b>Nome</b><br><a th:href="${(#mvc.url('EC#detalhesEvento').arg(0, evento.codigo)).build()}"><span th:text="${evento.nome}"></span></a></p>
+				</div>
+				<div class="col">
+				<p><b>Local</b><br><span th:text="${evento.local}"></span></p>
+				</div>
+				<div class="col">
+				<p><b>Data</b><br><span th:text="${evento.data}"></span></p>
+				</div>
+				<div class="col">				
+				<p><b>Horario</b><br><span th:text="${evento.horario}"></span></p>
+				</div>
+				<div class="col" style="width:5% !important;">
+				<p style="margin-top:20px;margin-bottom:20px;"><a style="background-color:transparent;color:#26a69a;box-shadow:0px 0px 0px;" class="btn"  href="/cadastro"><i class="material-icons">add</i></a></p>
+				</div>
+				<div class="col" style="width:5% !important;">				
+				<p style="margin-top:20px;margin-bottom:20px;"><a style="background-color:transparent;color:#26a69a;box-shadow:0px 0px 0px;" class="btn"  th:href="${(#mvc.url('EC#deletarEvento').arg(0, evento.codigo)).build()}"><i class="material-icons">delete</i></a></p>
+				</div>
+				<div class="col" style="width:5	% !important;">
+				<p style="margin-top:20px;margin-bottom:20px;"><a style="background-color:transparent;color:#26a69a;box-shadow:0px 0px 0px;" class="btn"  th:href="${(#mvc.url('EC#alterarEvento').arg(0, evento.codigo)).build()}"><i class="material-icons">edit</i></a></p>				
+				</div>
+				</div>
+			</div>
+		</div>
+
+</body>
+
+</html>

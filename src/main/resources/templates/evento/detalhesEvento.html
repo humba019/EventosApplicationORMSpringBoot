@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" 
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	  <head>
+	      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+	      	    	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	      	    	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+		<title>Eventos APP</title>	  
+		<style>
+		h1{
+		text-align:center;font-size:17pt;
+		}
+		h3{
+		text-align:center;font-size:17pt;
+		}
+		h5{
+		text-align:center;font-size:17pt;
+		}
+		.col{
+		width:33% !important;margin:auto;text-align:center;
+		}
+		.row{
+		color:#2bbbad !important;text-align:center !important;width:100%;border-left:2px solid #2bbbad !important ;background-color:none;color:#262626;box-shadow:0 0 0.5em gray;
+		}
+		.row p{
+		display:inline-block;padding:0px 30px;
+		}
+		span{
+		color:gray !important;
+		}
+		nav{
+		background-color:#26a69a !important; color:#fff;text-align:center; font-weight:bold;
+		}
+		#mensagem{
+		text-align:center;
+		}
+		#mensagem span{
+		background-color:#fff !important; color:#26a69a !important;text-align:center; font-weight:bold;padding:10px;border:1px solid #26a69a;
+		}
+		</style>
+	  </head>
+<body>  
+	<nav>
+		<a href="/eventos">Lista de Eventos</a>
+	</nav>	
+	<h1>Eventos</h1>
+		<div th:each="evento : ${evento}" class="container">
+			<div class="row" style="border-top:2px solid #26a69a;background-image:none !important;color:#262626 !important;">
+				<p><b>Nome</b><br><span th:text="${evento.nome}"></span></p>
+				<p><b>Local</b><br><span th:text="${evento.local}"></span></p>
+				<p><b>Data</b><br><span th:text="${evento.data}"></span></p>
+				<p><b>Horario</b><br><span th:text="${evento.horario}"></span></p>
+				<a style="background-color:transparent; box-shadow:0px 0px 0px;color:#26a69a;"class="btn" th:href="${(#mvc.url('EC#alterarEvento').arg(0, evento.codigo)).build()}">Editar</a>
+			</div>
+		<span id="mensagem" >
+			<th:block th:include="mensagemValidacao"></th:block>
+		</span>	
+			<form method="post">
+			<div class="input-field">
+				<label>Nome do Convidado</label>
+				<input type="text" value="" name="nomeCon"/>
+			</div>
+			<div class="input-field">
+				<label>RG do Convidado</label>
+				<input type="text" value="" name="rg"/>
+			</div>
+				<button type="submit" class="btn">Adicionar</button>
+			</form>
+			
+		</div>
+			<h5>Lista de Convidados</h5>
+		<div class="container" >
+			<div class="row" th:each="convidado : ${convidados}">
+			<div class="col">
+			<p><b>RG do Convidado</b><br><span th:text="${convidado.rg}"></span></p>
+			</div>
+			<div class="col">
+			<p><b>Nome do Convidado</b><br><span th:text="${convidado.nomeCon}"></span></p>
+			</div>
+			<div class="col">
+			<p><a style="background-color:transparent;color:gray;box-shadow:0px 0px 0px;" class="btn" th:href="${(#mvc.url('EC#deletarConvidado').arg(0, convidado.rg)).build()}"><i class="material-icons">delete</i></a></p>
+			</div>
+			</div>
+		</div>
+	
+</body>
+
+</html>

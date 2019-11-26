@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" 
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	  <head>
+	      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+	      	    	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		<style>
+		h1{
+		text-align:center;font-size:17pt;
+		}
+		h3{
+		text-align:center;font-size:17pt;
+		}
+		h5{
+		text-align:center;font-size:17pt;
+		}
+		.col{
+		width:25%;
+		}
+		.row{
+		background-color:none;color:#262626;
+		}
+		</style>
+	  </head>
+<body> 
+	
+	<div class="alert  alert-success alert-dismissible" role="alert" th:if="${not #strings.isEmpty(mensagem)}">
+		<span  th:text="${mensagem}"></span>
+	</div>
+		
+</body>
+
+</html>
